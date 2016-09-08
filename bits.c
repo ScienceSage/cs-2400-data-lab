@@ -188,7 +188,7 @@ int bitNor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
-  return 2;
+  return ~ 0 ^ (1 << 31);
 }
 // rating 2
 /* 
