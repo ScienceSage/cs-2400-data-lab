@@ -25,11 +25,11 @@ team_struct team =
       Your login ID if working as a one person team
       or, ID1+ID2 where ID1 is the login ID of the first team member
       and ID2 is the login ID of the second team member */
-    "", 
+    "sath8400", 
    /* Student name 1: Replace with the full name of first team member */
-   "",
+   "Sage Thomas",
    /* Login ID 1: Replace with the login ID of first team member */
-   "",
+   "sath8400",
 
    /* The following should only be changed if there are two team members */
    /* Student name 2: Full name of the second team member */
@@ -179,7 +179,7 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
-  return 2;
+  return ~x & ~y;
 }
 /* 
  * TMax - return maximum two's complement integer 
