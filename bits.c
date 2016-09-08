@@ -179,6 +179,7 @@ NOTES:
  *   Rating: 1
  */
 int bitNor(int x, int y) {
+  /* flips bits on x and y, then compares with AND */
   return ~x & ~y;
 }
 /* 
@@ -188,6 +189,7 @@ int bitNor(int x, int y) {
  *   Rating: 1
  */
 int tmax(void) {
+  /* makes an int with all 1's, then flips the last bit */
   return ~ 0 ^ (1 << 31);
 }
 // rating 2
@@ -201,7 +203,11 @@ int tmax(void) {
  *   Rating: 2
  */
 int fitsBits(int x, int n) {
-  return 2;
+  /* get the sign value, then get the largest value that ignores the sign, then shift and see if there are any bits that can't fit */
+  int sign = x >> 31;
+  int largest = (~x & sign) + (x & ~sign);
+  int n_min_1 = n + ~0;
+  return !(largest >> n_min_1);
 }
 /* 
  * divpwr2 - Compute x/(2^n), for 0 <= n <= 30
