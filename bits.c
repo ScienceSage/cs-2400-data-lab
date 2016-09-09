@@ -388,5 +388,10 @@ int isNonZero(int x) {
  *   Rating: 4 
  */
 int bang(int x) {
-  return 2;
+  /* same as previous code, but invert the least signifigant bit */
+  int half = x | (x >> 16);
+  int quarter = half | (half >> 8);
+  int eighth = quarter | (quarter >> 4);
+  int sixt = eighth | (eighth >> 2);
+  return ((sixt | (sixt >> 1)) + 1) & 1;
 }
