@@ -371,7 +371,14 @@ int bitCount(int x) {
  *   Rating: 4 
  */
 int isNonZero(int x) {
-  return 2;
+  /* folds the number until the least signifigant bit is 1 if there is a 1 anywhere in the bits
+   * This uses 11 operators, though :( 
+   */
+  int half = x | (x >> 16);
+  int quarter = half | (half >> 8);
+  int eighth = quarter | (quarter >> 4);
+  int sixt = eighth | (eighth >> 2);
+  return (sixt | (sixt >> 1)) & 1;
 }
 /* 
  * bang - Compute !x without using !
