@@ -232,7 +232,9 @@ int divpwr2(int x, int n) {
  *   Rating: 2
  */
 int isNotEqual(int x, int y) {
-  return 2;
+  /* xor finds any differences, then uses ! to output */
+  int dif = x ^ y;
+  return !!dif;
 }
 /* 
  * bitXor - x^y using only ~ and & 
