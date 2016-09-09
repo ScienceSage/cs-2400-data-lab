@@ -9,11 +9,5 @@ int main() {
 
 int test(int highbit, int lowbit)
 {
-	int mask = ~0;
-  printf("%x\n", mask);
-  mask = mask & ~((1 << lowbit) + ~0);
-  printf("%x\n", mask);
-  mask = mask & ((1 << (highbit+1)) + ~0);
-  printf("%x\n", mask);
-  return mask;
+	return 1 << 31;
 }

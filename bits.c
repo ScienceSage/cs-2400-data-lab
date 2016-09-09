@@ -331,7 +331,10 @@ int bitMask(int highbit, int lowbit) {
  *   Rating: 4
  */
 int abs(int x) {
-  return 2;
+  /* get sign and xor with that (only affects negatives), then add one if negative */
+  int sign = x >> 31;
+  int xor = x ^ sign;
+  return xor + (~sign + 1);
 }
 /*
  * bitCount - returns count of number of 1's in word
