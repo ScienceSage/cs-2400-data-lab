@@ -3,15 +3,17 @@
 int test(int x, int n);
 
 int main() {
-  printf("%x\n", test(0x87654321,4));
+  printf("%x\n", test(5,3));
   return 0;
 }
 
-int test(int x, int n)
+int test(int highbit, int lowbit)
 {
-	int basic_shift = x >> n;
-  printf("%x\n", basic_shift);
-  int temp = (1 << (32 - n)) + ~0;
-  printf("%x\n", temp);
-  return basic_shift & temp;
+	int mask = ~0;
+  printf("%x\n", mask);
+  mask = mask & ~((1 << lowbit) + ~0);
+  printf("%x\n", mask);
+  mask = mask & ((1 << (highbit+1)) + ~0);
+  printf("%x\n", mask);
+  return mask;
 }

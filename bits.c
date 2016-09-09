@@ -317,7 +317,10 @@ int isGreater(int x, int y) {
  *   Rating: 3
  */
 int bitMask(int highbit, int lowbit) {
-  return 2;
+  /* great a mask for the lower bound and higher bound, then combine and not */
+  int low_mask = ~(~0 << lowbit);
+  int high_mask = (~0 << highbit) & (~(1 << highbit));
+  return ~(low_mask | high_mask);
 }
 // rating 4
 /* 
