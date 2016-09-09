@@ -244,7 +244,8 @@ int isNotEqual(int x, int y) {
  *   Rating: 2
  */
 int bitXor(int x, int y) {
-  return 2;
+  /* DeMorgan's law (~x & y) | (x & ~y) */
+  return ~(~(~x & y) & ~(x & ~y));
 }
 /* 
  * copyLSB - set all bits of result to least significant bit of x
@@ -254,7 +255,9 @@ int bitXor(int x, int y) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  return 2;
+  /* Move least significant to the most, then bit shift right */
+  int most_sig = x << 31;
+  return most_sig >> 31;
 }
 // rating 3
 /* 
