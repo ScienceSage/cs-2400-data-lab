@@ -255,7 +255,7 @@ int bitXor(int x, int y) {
  *   Rating: 2
  */
 int copyLSB(int x) {
-  /* Move least significant to the most, then bit shift right */
+  /* Move least significant to the most, then bit shift right to copy the most signifigant */
   int most_sig = x << 31;
   return most_sig >> 31;
 }
@@ -268,7 +268,13 @@ int copyLSB(int x) {
  *   Rating: 3
  */
 int reverseBytes(int x) {
-  return 2;
+  /* set the new bytes by range */
+  int const range = 0xff;
+  int b1 = (x >> 24) & range;
+  int b2 = (x >> 8) & (range << 8);
+  int b3 = (x << 8) & (range << 16);
+  int b4 = x << 24;
+  return b1 + b2 + b3 + b4;
 }
 /* 
  * logicalShift - shift x to the right by n, using a logical shift
@@ -279,7 +285,10 @@ int reverseBytes(int x) {
  *   Rating: 3 
  */
 int logicalShift(int x, int n) {
-  return 2;
+  /* bitwise shifts, then clears n most signifigant bits */
+  int basic_shift = x >> n;
+  int valid_bits = (1 << (~n + 33)) + ~0;
+  return basic_shift & valid_bits;
 }
 /* 
  * isGreater - if x > y  then return 1, else return 0 
