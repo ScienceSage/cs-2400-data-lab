@@ -298,7 +298,13 @@ int logicalShift(int x, int n) {
  *   Rating: 3
  */
 int isGreater(int x, int y) {
-  return 2;
+  /* gets the signs, if equal they can by compared by subtraction's sign bit, else signs are compared */
+  int sign_x = x >> 31;
+  int sign_y = y >> 31;
+  int is_same_sign = !(sign_x ^ sign_y);
+	int value_greater = ((x + ~y) >> 31) & is_same_sign;
+	int sign_greater = sign_x & !sign_y;
+	return !(value_greater | sign_greater);
 }
 /* 
  * bitMask - Generate a mask consisting of all 1's 
